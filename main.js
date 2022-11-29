@@ -1,32 +1,32 @@
 import './style.css'
 import '@picocss/pico'
-const formConsultarCep = document.querySelector('#consultarCep')
-const inputCep = formConsultarCep.cep // seleciona o input do cep a partir do formulário
+const perfilLocalizar = document.querySelector('#consultarCep')
+const inputNome = perfilLocalizar.nome // seleciona o input do a partir do formulário
 const divDados = document.querySelector('#dados')
-const btnConsultarCep =
-  document.querySelector('#btnConsultarCep')
+const btnConsultarPerfil = document.querySelector('#btnConsultarPerfil')
 /* const loader =
   `<a href="#" aria-busy="true">
     Consultando CEP, aguarde...
   </a>` */
 
-formConsultarCep.addEventListener('submit', function (event) {
+perfilLocalizar.addEventListener('submit', function (event) {
   event.preventDefault() // anula comportamento padrão de envio do form ao clicar no botão
   ativaLoader(true)
-  consultarCep(inputCep.value) // invoca a função passando o cep digitado por parâmetro
+  localizadorPerfil(inputNome.value) // invoca a função passando o nome digitado por parâmetro
 })
 
-async function consultarCep(cep) {
-  let response = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
-  let dadosCep = await response.json()
-  if (dadosCep.erro) {
+async function localizadorPerfil(nome) {
+  let response = await fetch(`https://api.github.com/users/${nome}`)
+  let dadosPerfil = await response.json()
+  if (dadosPerfil.message === 'Not Found') {
     divDados.innerHTML = `
-      <div class="erro">CEP não encontrado!</div>
+      <div class="erro">Usuario não encontrado!</div>
     `
   } else {
     divDados.innerHTML = `
-    <p> Endereço: ${dadosCep.logradouro}  </p>
-    <p> Localidade: ${dadosCep.localidade}  </p>
+    <img src="${dadosPerfil.avatar_url}" alt="">
+    <p> ${dadosPerfil.name}</p> 
+    <a href="${dadosPerfil.html_url}">Perfil no GitHub</a>   
   `
   }
   ativaLoader(false)
@@ -34,13 +34,10 @@ async function consultarCep(cep) {
 
 function ativaLoader(ativo) {
   if (ativo) {
-    btnConsultarCep.
-      setAttribute('aria-busy', 'true')
-    btnConsultarCep.
-      textContent = 'Consultando CEP...'
+    btnConsultarPerfil.setAttribute('aria-busy', 'true')
+    btnConsultarPerfil.textContent = 'Buscado Perfil...'
   } else {
-    btnConsultarCep.removeAttribute('aria-busy')
-    btnConsultarCep.
-      textContent = 'Consultar'
+    btnConsultarPerfil.removeAttribute('aria-busy')
+    btnConsultarPerfil.textContent = 'Buscar'
   }
 }

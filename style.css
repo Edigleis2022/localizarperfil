@@ -1,6 +1,33 @@
 .erro {
     padding: 20px;
-    background-color: #ff8080;
-    border: 1px solid #e42d2d;
-    color: #e42d2d;
+    color: white;
+}
+
+button {
+    color: blueviolet;
+}
+
+img {
+    width: 120px;
+    border-radius: 40px;
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+
+}
+
+#dados {
+    background-color: rgb(92, 8, 171);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    gap: 10px;
+}
+
+#dados p {
+    color: white;
+    
+
 }
