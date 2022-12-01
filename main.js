@@ -31,10 +31,9 @@ async function localizadorPerfil(nome) {
 
 function ativaLoader(ativo) {
   if (ativo) {
-    btnConsultarPerfil.setAttribute('aria-busy', 'true')
-    btnConsultarPerfil.textContent = 'Buscado Perfil...'
+    divDados.setAttribute('aria-busy', 'true')
+    divDados.textContent = 'Buscado Perfil...'
   } else {
-    btnConsultarPerfil.removeAttribute('aria-busy')
-    btnConsultarPerfil.textContent = 'Buscar'
+    divDados.removeAttribute('aria-busy')
   }
 }
