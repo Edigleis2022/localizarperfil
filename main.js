@@ -1,6 +1,6 @@
 import './style.css'
 import '@picocss/pico'
-const perfilLocalizar = document.querySelector('#consultarCep')
+const perfilLocalizar = document.querySelector('#consultarPerfil')
 const inputNome = perfilLocalizar.nome // seleciona o input do a partir do formulário
 const divDados = document.querySelector('#dados')
 const btnConsultarPerfil = document.querySelector('#btnConsultarPerfil')
@@ -32,7 +32,7 @@ async function localizadorPerfil(nome) {
 function ativaLoader(ativo) {
   if (ativo) {
     divDados.setAttribute('aria-busy', 'true')
-    divDados.textContent = 'Buscado Perfil...'
+    divDados.textContent = 'Buscando Perfil...'
   } else {
     divDados.removeAttribute('aria-busy')
   }
