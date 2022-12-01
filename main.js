@@ -4,10 +4,7 @@ const perfilLocalizar = document.querySelector('#consultarCep')
 const inputNome = perfilLocalizar.nome // seleciona o input do a partir do formulário
 const divDados = document.querySelector('#dados')
 const btnConsultarPerfil = document.querySelector('#btnConsultarPerfil')
-/* const loader =
-  `<a href="#" aria-busy="true">
-    Consultando CEP, aguarde...
-  </a>` */
+
 
 perfilLocalizar.addEventListener('submit', function (event) {
   event.preventDefault() // anula comportamento padrão de envio do form ao clicar no botão
